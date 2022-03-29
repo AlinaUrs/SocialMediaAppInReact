@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./AuthForm.module.scss";
 
@@ -7,6 +7,9 @@ const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const userInputRef = useRef();
+  const passwordInputRef = useRef();
 
   const toggleAuthState = () => {
     setIsLogin((prevState) => {
@@ -18,10 +21,15 @@ const AuthForm = () => {
     event.preventDefault();
     setIsLoading(true);
 
+    const usernameValue = userInputRef.current.value;
+    const passwordValue = passwordInputRef.current.value;
+
     setTimeout(() => {
       setIsLoading(false);
       navigate("/");
     }, 2000);
+    userInputRef.current.value = "";
+    passwordInputRef.current.value = "";
   };
 
   const actionIsLoading = <p>Sending request...</p>;
@@ -35,12 +43,17 @@ const AuthForm = () => {
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Enter your email</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" required ref={userInputRef} />
         </div>
 
         <div className={classes.control}>
           <label htmlFor="password">Enter your password</label>
-          <input type="password" id="password" required />
+          <input
+            type="password"
+            id="password"
+            required
+            ref={passwordInputRef}
+          />
         </div>
 
         <div className={classes.actions}>
