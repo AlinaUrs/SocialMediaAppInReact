@@ -12,6 +12,8 @@ const Newsfeed = (props) => {
     sharesNumber: props.postData.numberOfShares,
   });
 
+  const [profileOptionsVisible, setProfileOptionsVisible] = useState(false);
+
   const toggleReactions = (reactionType) => {
     if (reactionType === "likes") {
       setReactions((prevState) => {
@@ -30,6 +32,16 @@ const Newsfeed = (props) => {
     }
   };
 
+  const deleteThisPost = () => {
+    props.removePost(props.postData.id);
+  };
+
+  const toggleProfileState = () => {
+    setProfileOptionsVisible((prevState) => {
+      return !prevState;
+    });
+  };
+
   return (
     <div className={classes.newsFeed}>
       <div className={classes["main-div"]}>
@@ -43,14 +55,20 @@ const Newsfeed = (props) => {
             />
             <span id={classes["username"]}>{props.postData.username}</span>
           </a>
-          <div className={classes["context-menu"]}>
+          <div
+            className={classes["context-menu"]}
+            onClick={toggleProfileState}
+            tabIndex="1"
+          >
+            {/* <div className={classes["context-menu"]} onClick={toggleProfileState} onBlur={toggleProfileState} tabIndex="1"> */}
             <a href="#" id="context-menu-button">
               <FaEllipsisH />
             </a>
-            <div
-              className={classes["context-menu-dropdown"]}
-              style={{ display: "none" }}
-            ></div>
+            {profileOptionsVisible && (
+              <div className={classes["context-menu-dropdown"]}>
+                <button onClick={deleteThisPost}>Delete this post</button>
+              </div>
+            )}
           </div>
         </div>
 

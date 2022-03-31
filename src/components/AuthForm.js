@@ -1,10 +1,12 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./AuthForm.module.scss";
+import axios from "axios";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,22 +26,57 @@ const AuthForm = () => {
     const usernameValue = userInputRef.current.value;
     const passwordValue = passwordInputRef.current.value;
 
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate("/");
-    }, 2000);
+    if (isLogin) {
+      axios
+        .post("/login", {
+          username: usernameValue,
+          password: passwordValue,
+        })
+        .then(function (response) {
+          setTimeout(() => {
+            setIsLoading(false);
+            navigate("/");
+          }, 2000);
+        })
+        .catch(function (error) {
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsError((prevState) => !prevState);
+          }, 2000);
+        });
+    } else {
+      axios
+        .post("/signup", {
+          username: usernameValue,
+          password: passwordValue,
+        })
+        .then(function (response) {
+          setTimeout(() => {
+            setIsLoading(false);
+            toggleAuthState();
+          }, 2000);
+        })
+        .catch(function (error) {
+          setTimeout(() => {
+            setIsLoading(false);
+            setIsError((prevState) => !prevState);
+            toggleAuthState();
+          }, 2000);
+        });
+    }
+
     userInputRef.current.value = "";
     passwordInputRef.current.value = "";
   };
 
   const actionIsLoading = <p>Sending request...</p>;
   const actionIsNotLoading = (
-    <button>{isLogin ? "Login" : "Create New Account"}</button>
+    <button>{isLogin ? "Login" : "Create new account"}</button>
   );
 
   return (
     <section className={classes.auth}>
-      <h1> {isLogin ? "Login" : "Sign up"}</h1>
+      <h1>{isLogin ? "Login" : "Sign up"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Enter your email</label>
@@ -58,12 +95,12 @@ const AuthForm = () => {
 
         <div className={classes.actions}>
           {/* {isLoading && <p>Sending request...</p>}
-          {isLoading && (
-            <button>{isLogin ? "Login" : "Create New Account"}</button>
-          )}  */}
+
+                    {!isLoading && <button>{isLogin ? 'Login' : 'Create new account'}</button>} */}
           {isLoading ? actionIsLoading : actionIsNotLoading}
+          {isError && <p>Please Try again</p>}
           <button className={classes.toggle} onClick={toggleAuthState}>
-            {isLogin ? "Create New Account" : "Login with an existing account"}
+            {isLogin ? "Create new account" : "Login with an existing account"}
           </button>
         </div>
       </form>
