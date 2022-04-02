@@ -11,7 +11,16 @@
   border-radius: 50%;
 }
 
-.nav-buttons a {
+.post-image {
+  height: 500px;
+  width: auto;
+}
+.userAndName {
+  display: flex;
+  align-items: center;
+}
+
+.post-image .nav-buttons a {
   text-decoration: none;
   color: #ffffff;
 }
@@ -52,11 +61,12 @@
 }
 
 .user-info .context-menu .context-menu-dropdown {
-  width: 150px;
-  height: 300px;
+  width: 100px;
+  height: auto;
   position: absolute;
-  background-color: grey;
-  right: 30px;
+  background-color: rgb(241, 241, 241);
+  left: 30px;
+  top: 10px;
 }
 
 .fa-ellipsis-h {

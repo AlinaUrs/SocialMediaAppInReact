@@ -1,5 +1,6 @@
 import classes from "./Newsfeed.module.scss";
-import newPicture from "../../../assets/firephoto.jpeg";
+import newPicture from "../../../assets/nature.jpg";
+import otherPicture from "../../../assets/icon.jpg";
 import { FaEllipsisH, FaThumbsUp, FaComment, FaShare } from "react-icons/fa";
 import CommentsSection from "./Comments/CommentsSection";
 import { useState } from "react";
@@ -46,11 +47,11 @@ const Newsfeed = (props) => {
     <div className={classes.newsFeed}>
       <div className={classes["main-div"]}>
         <div className={classes["user-info"]}>
-          <a href="#">
+          <a href="#" className={classes.userAndName}>
             <img
               className={classes["rounded-circle"]}
               id={classes.profilepic}
-              src={newPicture}
+              src={otherPicture}
               alt="Profile picture"
             />
             <span id={classes["username"]}>{props.postData.username}</span>
@@ -80,6 +81,7 @@ const Newsfeed = (props) => {
           />
           <p id={classes["postTitle"]}>{props.postData.text}</p>
         </div>
+
         <div className={classes["likes-shares"]}>
           <a href="#">
             <FaThumbsUp />

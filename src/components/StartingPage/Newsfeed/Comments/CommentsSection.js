@@ -1,5 +1,5 @@
 import classes from "./CommentsSection.module.scss";
-import newPicture from "../../../../assets/firephoto.jpeg";
+import commentsProfile from "../../../../assets/usercomments.png";
 
 const CommentsSection = (props) => {
   return (
@@ -8,7 +8,7 @@ const CommentsSection = (props) => {
         <img
           className={classes["rounded-circle"]}
           id={classes.profilepic}
-          src={newPicture}
+          src={commentsProfile}
           alt="Profile picture"
         />
       </a>

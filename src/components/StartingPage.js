@@ -12,7 +12,7 @@ const POST_DATA = [
     postDate: "20/07/2022",
     numberOfLikes: 45,
     numberOfShares: 12,
-    profileImg: "../assests/firephoto.jpeg",
+    profileImg: "../assets/nature.jpg",
     text: "This is my new dynamic post",
     comments: [
       {
@@ -33,7 +33,7 @@ const POST_DATA = [
     postDate: "14/01/1922",
     numberOfLikes: 78,
     numberOfShares: 4,
-    profileImg: "../assests/firephoto.jpeg",
+    profileImg: "../assets/nature.jpg",
     text: "This is my second dynamic post",
     comments: [
       {
