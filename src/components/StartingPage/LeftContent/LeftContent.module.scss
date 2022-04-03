@@ -1,5 +1,62 @@
 .leftSideContent {
+  display: flex;
+  flex-direction: column;
+  height: auto;
   width: 200px;
   border: 1px solid black;
-  background-color: red;
+  background-color: black;
+}
+
+.asideTop .assideBottom {
+  display: flex;
+}
+
+.asideTop .listUl {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.listLi {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+}
+
+.listLi:hover,
+.titleBottom:hover {
+  background-color: dimgray;
+  border-radius: 10px;
+}
+
+.listLi .link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.userPic {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+.groupIcon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+#arrowDown {
+  height: 1.5rem;
+  width: 2rem;
+  color: rgb(37, 34, 34);
+}
+
+.titleBottom {
+  margin: 50px;
+  font-size: 24px;
+  font-weight: 700;
+  color: darkslategray;
 }

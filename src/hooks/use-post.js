@@ -46,32 +46,32 @@ const usePost = (interval) => {
     changed: 0,
   });
 
-  useEffect(() => {
-    const postInterval = setInterval(() => {
-      setPost((prevState) => {
-        if (prevState.postData.length > 3) {
-          clearInterval(postInterval);
-        }
-        let newPost;
-        if (prevState.postData.length > 0) {
-          newPost = {
-            ...POST_DATA[prevState.postData.length % 2],
-            id: prevState.postData.length * Math.random() * 100,
-          };
-        } else {
-          newPost = {
-            ...POST_DATA[prevState.postData[0]],
-            id: prevState.postData.length * Math.random() * 100,
-          };
-        }
+  // useEffect(() => {
+  //   const postInterval = setInterval(() => {
+  //     setPost((prevState) => {
+  //       if (prevState.postData.length > 3) {
+  //         clearInterval(postInterval);
+  //       }
+  //       let newPost;
+  //       if (prevState.postData.length > 0) {
+  //         newPost = {
+  //           ...POST_DATA[prevState.postData.length % 2],
+  //           id: prevState.postData.length * Math.random() * 100,
+  //         };
+  //       } else {
+  //         newPost = {
+  //           ...POST_DATA[prevState.postData[0]],
+  //           id: prevState.postData.length * Math.random() * 100,
+  //         };
+  //       }
 
-        return {
-          ...prevState,
-          postData: [newPost, ...prevState.postData],
-        };
-      });
-    }, interval);
-  }, [post.changed]);
+  //       return {
+  //         ...prevState,
+  //         postData: [newPost, ...prevState.postData],
+  //       };
+  //     });
+  //   }, interval);
+  // }, [post.changed]);
 
   const deletePost = (id) => {
     setPost((prevState) => {
