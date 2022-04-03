@@ -43,7 +43,7 @@ const LeftContent = () => {
           <li className={classes.listLi}>
             <Link to="/groups" className={classes.link}>
               <img src={groupsPic} alt="Your groups on Facebook" />
-              <spna>Groups</spna>
+              <span>Groups</span>
             </Link>
           </li>
           <li className={classes.listLi}>
@@ -117,6 +117,14 @@ const LeftContent = () => {
                 className={classes.groupIcon}
               />
               <span>Share your closet Cluj</span>
+            </Link>
+          </li>
+          <li className={classes.listLi}>
+            <Link to="./seemore" className={classes.link}>
+              <FaArrowAltCircleDown
+                id={classes.arrowDown}
+              ></FaArrowAltCircleDown>
+              <span>See more</span>
             </Link>
           </li>
         </ul>

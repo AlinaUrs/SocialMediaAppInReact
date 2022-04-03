@@ -1,0 +1,39 @@
+.rightContentSide {
+  display: flex;
+  background-color: black;
+}
+
+.contactsTitle {
+  color: white;
+  margin-left: 20%;
+}
+
+.listUlRight {
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+}
+
+.listLiRight {
+  display: flex;
+  padding: 20px;
+}
+
+.listLiRight:hover {
+  background-color: dimgray;
+  border-radius: 10px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+.userPic {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
