@@ -10,123 +10,106 @@ import seventhUser from "../../../assets/users/seventh.jpg";
 import eightUser from "../../../assets/users/eight.jpg";
 import ninthUser from "../../../assets/users/ninth.webp";
 import tenthUser from "../../../assets/users/tenth.jpg";
-import { FaArrowAltCircleDown } from "react-icons/fa";
+import ChatBox from "./Chat";
+import { useState } from "react";
+
+const contactListChat = [
+  {
+    title: "Alfred Cochran",
+    imgSrc: firstUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Jayce Hubbard",
+    imgSrc: secondUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Dayanara Dominguez",
+    imgSrc: thirdUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Eli Kaise",
+    imgSrc: forthUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Geovanni Jeffreson",
+    imgSrc: fifthUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Kallie Bailey",
+    imgSrc: sixthUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Kaydence Crosby",
+    imgSrc: seventhUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Lena Parks",
+    imgSrc: eightUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Elijah Clark",
+    imgSrc: ninthUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+  {
+    title: "Cohen Levy",
+    imgSrc: tenthUser,
+    url: "/chat",
+    imgClassName: classes.userPic,
+  },
+];
 
 const RightContent = () => {
+  const [chatOpen, setChatOpen] = useState(false);
+
+  const toggleChat = () => {
+    setChatOpen((prevState) => {
+      debugger;
+      return !prevState;
+    });
+  };
+
   return (
     <aside className={classes.rightContentSide}>
       <div className={classes.contacts}>
         <h3 className={classes.contactsTitle}>Contacts chat</h3>
+
         <ul className={classes.listUlRight}>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={firstUser}
-                alt="First Contact Chat"
-                className={classes.userPic}
-              />
-              <span>Alfred Cochran</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={secondUser}
-                alt="Second user chat"
-                className={classes.userPic}
-              />
-              <span>Jayce Hubbard</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={thirdUser}
-                alt="Third user chat"
-                className={classes.userPic}
-              />
-              <span>Dayanara Dominguez</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={forthUser}
-                alt="Forth user chat"
-                className={classes.userPic}
-              />
-              <span>Eli Kaise</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={fifthUser}
-                alt="Fifth user chat"
-                className={classes.userPic}
-              />
-              <span>Geovanni Jeffreson</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={sixthUser}
-                alt="Sixth user chat"
-                className={classes.userPic}
-              />
-              <span>Kallie Bailey</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={seventhUser}
-                alt="Seventh user chat"
-                className={classes.userPic}
-              />
-              <span> Kaydence Crosby</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={eightUser}
-                alt="Eight user chat"
-                className={classes.userPic}
-              />
-              <span>Lena Parks</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={ninthUser}
-                alt="Ninth user chat"
-                className={classes.userPic}
-              />
-              <span>Elijah Clark</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="/" className={classes.link}>
-              <img
-                src={tenthUser}
-                alt="Tenth user chat"
-                className={classes.userPic}
-              />
-              <span>Cohen Levy</span>
-            </Link>
-          </li>
-          <li className={classes.listLiRight}>
-            <Link to="./seemore" className={classes.link}>
-              <FaArrowAltCircleDown
-                id={classes.arrowDown}
-              ></FaArrowAltCircleDown>
-              <span>More contacts</span>
-            </Link>
-          </li>
+          {contactListChat.map((item, index) => {
+            return (
+              <li key={index} className={classes.listLiRight}>
+                <div className={classes.link} onClick={toggleChat}>
+                  <img
+                    src={item.imgSrc}
+                    alt={item.title}
+                    className={item.imgClassName}
+                  />
+                  <span>{item.title}</span>
+                </div>
+              </li>
+            );
+          })}
         </ul>
+      </div>
+      <div className={`${classes.chatBoxDiv} ${chatOpen && "hidden"}`}>
+        <ChatBox></ChatBox>
       </div>
     </aside>
   );

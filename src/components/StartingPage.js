@@ -1,6 +1,7 @@
 import classes from "./StartingPage.module.scss";
 import LeftContent from "./StartingPage/LeftContent/LeftContent"; // ./ in acelasi folder
 import RightContent from "./StartingPage/RightContent/RightContent";
+import ChatBox from "./StartingPage/RightContent/Chat";
 import userIcon from "../assets/user.png";
 import Newsfeed from "./StartingPage/Newsfeed/Newsfeed";
 import { useState } from "react";
@@ -66,7 +67,7 @@ const StartingPage = () => {
           })}
         {postData.length === 0 && <p>You have no post to display</p>}
       </div>
-      <RightContent />
+      <RightContent></RightContent>
     </div>
   );
 };

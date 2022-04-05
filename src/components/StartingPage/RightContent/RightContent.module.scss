@@ -3,26 +3,22 @@
   background-color: black;
 }
 
-.contactsTitle {
-  color: white;
-  margin-left: 20%;
-}
-
-.listUlRight {
-  display: flex;
-  flex-direction: column;
-
-  list-style: none;
-}
-
 .listLiRight {
   display: flex;
+  flex-direction: column;
   padding: 20px;
+  align-items: flex-start;
 }
 
 .listLiRight:hover {
   background-color: dimgray;
   border-radius: 10px;
+}
+
+.contactsTitle {
+  color: white;
+  margin-left: 20%;
+  margin-top: 80%;
 }
 
 .link {
@@ -36,4 +32,13 @@
   height: 40px;
   width: 40px;
   border-radius: 100%;
+}
+
+.chatBoxDiv {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  &.hidden {
+    display: none;
+  }
 }

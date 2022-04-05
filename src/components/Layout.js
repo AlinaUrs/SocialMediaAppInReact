@@ -1,4 +1,5 @@
 import Navigation from "./Navigation";
+import RightContent from "./StartingPage/RightContent/RightContent";
 
 const Layout = (props) => {
   return (

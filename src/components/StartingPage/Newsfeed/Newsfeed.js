@@ -114,9 +114,10 @@ const Newsfeed = (props) => {
             <span>Share</span>
           </div>
         </div>
+
         <div className={classes["comment-box-container"]}>
           <div className={classes.commentContent}>
-            <input type="text" placeholder="Introduceti comentariul aici..." />
+            <input type="text" placeholder="Your comment here..." />
           </div>
           {props.postData.comments.map((comment) => {
             return <CommentsSection commentData={comment}></CommentsSection>;
